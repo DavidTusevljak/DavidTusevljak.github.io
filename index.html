@@ -3,45 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Tusevljak</title>
+    <title>David Tusevljak - Portfolio & Lebenslauf</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>David Tusevljak</h1>
-            <p class="subtitle">Schüler | Mittelschule Antonia Bruha, Wien</p>
-        </header>
-
-        <section class="about">
-            <h2>Über mich</h2>
-            <p>
-                Ich bin David und besuche derzeit die Antonia Bruha Mittelschule in Wien. 
-                Mit meiner Lernbereitschaft und Teamfähigkeit bringe ich eine positive 
-                Einstellung und Freundlichkeit in jede Zusammenarbeit ein.
-            </p>
-        </section>
-
-        <section class="skills">
-            <h2>Fähigkeiten</h2>
-            <ul>
-                <li>MS Office</li>
-                <li>Englisch</li>
-                <li>Teamfähigkeit</li>
-                <li>Kommunikation</li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">DT</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">Über mich</a></li>
+                <li><a href="#skills" class="nav-link">Fähigkeiten</a></li>
+                <li><a href="#experience" class="nav-link">Erfahrung</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
             </ul>
-        </section>
+        </div>
+    </nav>
 
-        <section class="contact">
-            <h2>Kontakt</h2>
-            <p>
-                <a href="mailto:Tusevljak.david@outlook.at">Tusevljak.david@outlook.at</a>
-            </p>
-        </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="animate-title">Willkommen!</h1>
+                <p class="animate-subtitle">Ich bin David Tusevljak</p>
+                <p class="animate-description">Ein engagierter Schüler mit Leidenschaft für Lernen und Innovation</p>
+                <a href="#about" class="cta-button">Mehr erfahren</a>
+            </div>
+            <div class="hero-image">
+                <div class="image-frame">
+                    <img src="profile.jpg" alt="David Tusevljak" class="profile-image">
+                    <div class="image-border"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 David Tusevljak. Alle Rechte vorbehalten.</p>
-        </footer>
-    </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Über mich</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>
+                        Hallo! Ich bin David Tusevljak, Schüler der Mittelschule Antonia Bruha in Wien. 
+                        Ich bin ein engagierter und motivierter Lerner mit großer Leidenschaft für Bildung 
+                        und persönliches Wachstum.
+                    </p>
+                    <p>
+                        Mit meiner Teamfähigkeit, Freundlichkeit und positiven Einstellung trage ich gerne 
+                        zu gemeinsamen Projekten bei. Ich interessiere mich für verschiedene Bereiche und 
+                        bin immer bereit, Neues zu lernen.
+                    </p>
+                </div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-number">🎓</span>
+                        <p>Mittelschule</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">🌍</span>
+                        <p>Wien</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">⭐</span>
+                        <p>Engagiert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Fähigkeiten</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">📚</div>
+                    <h3>Sprachen</h3>
+                    <p>Deutsch, Englisch</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💼</div>
+                    <h3>Office & IT</h3>
+                    <p>MS Office, Computer-Grundlagen</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🤝</div>
+                    <h3>Soft Skills</h3>
+                    <p>Teamfähigkeit, Kommunikation</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">✨</div>
+                    <h3>Persönlichkeit</h3>
+                    <p>Freundlichkeit, Lernbereitschaft</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Ausbildung</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Mittelschule Antonia Bruha Wien</h3>
+                        <p class="company">Wien, Österreich</p>
+                        <p class="period">Aktuell</p>
+                        <p class="description">Engagierter Schüler mit Fokus auf ganzheitliche Bildung, Zusammenarbeit und persönliche Entwicklung.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Grundausbildung</h3>
+                        <p class="company">Wien</p>
+                        <p class="period">2012 - 2020</p>
+                        <p class="description">Solide schulische Grundlagen mit Fokus auf Sprachen, Mathematik und sozialen Kompetenzen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            <div class="contact-content">
+                <p>Hast du Fragen oder möchtest mich kennenlernen? Kontaktiere mich gerne!</p>
+                <div class="contact-buttons">
+                    <a href="mailto:Tusevljak.david@outlook.at" class="contact-btn email">
+                        📧 E-Mail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 David Tusevljak. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
