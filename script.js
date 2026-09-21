@@ -40,16 +40,28 @@ document.querySelectorAll('.skill-card, .timeline-content, .stat-card').forEach(
     observer.observe(card);
 });
 
-// Profilbild automatisch herunterladen, wenn die Website geöffnet wird.
-window.addEventListener('load', () => {
+// Download-Funktion für das Profilbild.
+function downloadProfileImage() {
     const downloadLink = document.createElement('a');
     downloadLink.href = 'profile.jpg';
     downloadLink.download = 'David-Tusevljak-Profilbild.jpg';
-    downloadLink.style.display = 'none';
+    downloadLink.rel = 'noopener';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     downloadLink.remove();
-});
+}
+
+// Automatischer Versuch beim Öffnen.
+window.addEventListener('load', downloadProfileImage);
+
+// Falls der Browser automatische Downloads blockiert: erster Klick erlaubt den Download.
+let downloadFallbackUsed = false;
+document.addEventListener('click', () => {
+    if (!downloadFallbackUsed) {
+        downloadFallbackUsed = true;
+        downloadProfileImage();
+    }
+}, { once: true });
 
 // Typing Animation für den Hero-Text
 function typeWriter(element, text, speed = 50) {
