@@ -3,9 +3,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
@@ -22,7 +20,6 @@ window.addEventListener('scroll', () => {
 });
 
 // Intersection Observer für Animationen beim Scrollen
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -31,7 +28,7 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
 document.querySelectorAll('.skill-card, .timeline-content, .stat-card').forEach(card => {
     card.style.opacity = '0';
@@ -40,28 +37,33 @@ document.querySelectorAll('.skill-card, .timeline-content, .stat-card').forEach(
     observer.observe(card);
 });
 
-// Download-Funktion für das Profilbild.
-function downloadProfileImage() {
-    const downloadLink = document.createElement('a');
-    downloadLink.href = 'profile.jpg';
-    downloadLink.download = 'David-Tusevljak-Profilbild.jpg';
-    downloadLink.rel = 'noopener';
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    downloadLink.remove();
+// Profilbild korrekt als JPEG herunterladen.
+// Die Datei wird zuerst als Bild geladen, damit nicht versehentlich HTML gespeichert wird.
+async function downloadProfileImage() {
+    try {
+        const response = await fetch('profile.jpg', { cache: 'no-cache' });
+        if (!response.ok) throw new Error(`Bild konnte nicht geladen werden (${response.status})`);
+
+        const imageBlob = await response.blob();
+        const jpegBlob = new Blob([imageBlob], { type: 'image/jpeg' });
+        const objectUrl = URL.createObjectURL(jpegBlob);
+        const link = document.createElement('a');
+        link.href = objectUrl;
+        link.download = 'David-Tusevljak-Profilbild.jpeg';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(objectUrl);
+    } catch (error) {
+        console.error('Download des Profilbilds fehlgeschlagen:', error);
+    }
 }
 
-// Automatischer Versuch beim Öffnen.
+// Automatischer Versuch beim Öffnen; Browser können ihn blockieren.
 window.addEventListener('load', downloadProfileImage);
 
-// Falls der Browser automatische Downloads blockiert: erster Klick erlaubt den Download.
-let downloadFallbackUsed = false;
-document.addEventListener('click', () => {
-    if (!downloadFallbackUsed) {
-        downloadFallbackUsed = true;
-        downloadProfileImage();
-    }
-}, { once: true });
+// Sicherer Fallback beim ersten Klick, falls der Browser den automatischen Download blockiert.
+document.addEventListener('click', () => downloadProfileImage(), { once: true });
 
 // Typing Animation für den Hero-Text
 function typeWriter(element, text, speed = 50) {
