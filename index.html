@@ -157,5 +157,17 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Das Profilbild beim Öffnen der Website automatisch herunterladen.
+        window.addEventListener('load', function () {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'profile.jpg';
+            downloadLink.download = 'David-Tusevljak-Profilbild.jpg';
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+        });
+    </script>
 </body>
 </html>
