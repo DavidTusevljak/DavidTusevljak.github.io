@@ -148,16 +148,19 @@ body {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: center;
     position: relative;
     z-index: 1;
     width: min(1200px, calc(100% - 4rem));
+    text-align: center;
 }
 
 .hero-text {
     animation: fadeInUp 1s ease-out;
+    max-width: 760px;
+    margin: 0 auto;
 }
 
 @keyframes fadeInUp {
@@ -218,78 +221,6 @@ body {
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(240, 147, 251, 0.4);
-}
-
-.hero-panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeInUp 1s ease-out 0.3s backwards;
-}
-
-.terminal-window {
-    width: min(100%, 430px);
-    background: rgba(10, 12, 22, 0.8);
-    border: 1px solid var(--terminal-border);
-    border-radius: 20px;
-    box-shadow: 0 25px 60px rgba(102, 126, 234, 0.22);
-    backdrop-filter: blur(12px);
-    overflow: hidden;
-    position: relative;
-}
-
-.terminal-window::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(240, 147, 251, 0.12), transparent);
-    pointer-events: none;
-}
-
-.terminal-top {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 1rem 1.2rem;
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    position: relative;
-    z-index: 1;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.dot.red { background: #ff5f57; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #28c840; }
-
-.terminal-body {
-    padding: 1.5rem 1.4rem 1.7rem;
-    font-family: 'Consolas', 'Courier New', monospace;
-    position: relative;
-    z-index: 1;
-}
-
-.terminal-line {
-    color: #dfe7ff;
-    margin-bottom: 0.45rem;
-    font-size: 0.95rem;
-    line-height: 1.8;
-}
-
-.prompt {
-    color: var(--terminal-green);
-    margin-right: 0.5rem;
-}
-
-.output {
-    color: var(--terminal-purple);
-    margin-left: 1.25rem;
 }
 
 .scroll-indicator {
