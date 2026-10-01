@@ -3,121 +3,691 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>David Tusevljak | Lebenslauf</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>David Tusevljak | Executive CV</title>
+    <style>
+      :root {
+        --bg-1: #060b17;
+        --bg-2: #0d172b;
+        --panel: rgba(12, 18, 32, 0.82);
+        --panel-strong: rgba(17, 25, 39, 0.96);
+        --line: rgba(148, 163, 184, 0.18);
+        --line-strong: rgba(96, 165, 250, 0.38);
+        --text: #e5edf8;
+        --muted: #a7b7ce;
+        --soft: #dfe9f7;
+        --blue: #6aa7ff;
+        --blue-strong: #2f6fe8;
+        --blue-deep: #18376d;
+        --blue-glow: rgba(96, 165, 250, 0.2);
+        --shadow: 0 28px 70px rgba(1, 5, 14, 0.48);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(67, 97, 238, 0.16), transparent 32%),
+          radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.12), transparent 28%),
+          linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        max-width: 1380px;
+        margin: 28px auto;
+        background: rgba(8, 13, 23, 0.66);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+
+      .topbar {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(14, 24, 43, 0.92), rgba(17, 25, 39, 0.78));
+        border-bottom: 1px solid var(--line);
+        padding: 54px 42px 40px;
+      }
+
+      .topbar::before {
+        content: "";
+        position: absolute;
+        right: -120px;
+        top: -120px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle, rgba(96, 165, 250, 0.14), transparent 64%);
+        border-radius: 50%;
+      }
+
+      .topbar-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .title-wrap {
+        flex: 1;
+      }
+
+      .eyebrow {
+        color: #a9c9ff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 5vw, 5.3rem);
+        letter-spacing: -0.06em;
+        line-height: 0.96;
+        margin-bottom: 16px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #edf5ff 0%, #8ab8ff 28%, #4f7fe7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .divider {
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), transparent);
+        margin-bottom: 18px;
+        border-radius: 99px;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .avatar {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(47, 111, 232, 0.35));
+        border: 1px solid var(--line-strong);
+        box-shadow: 0 18px 40px rgba(47, 111, 232, 0.22);
+        flex-shrink: 0;
+      }
+
+      .avatar span {
+        font-size: 3.3rem;
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        color: #edf5ff;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 28px;
+        padding: 28px 30px 40px;
+      }
+
+      .sidebar {
+        background: rgba(11, 18, 31, 0.84);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 26px 22px;
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+
+      .module {
+        margin-bottom: 32px;
+      }
+
+      .module:last-child {
+        margin-bottom: 0;
+      }
+
+      .module-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        color: var(--soft);
+        font-size: 1.02rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .module-head .icon {
+        width: 18px;
+        height: 18px;
+        color: var(--blue);
+      }
+
+      .rule {
+        width: 52px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--blue), transparent);
+        margin-bottom: 18px;
+      }
+
+      .contact-list,
+      .skills-list,
+      .lang-list {
+        list-style: none;
+      }
+
+      .contact-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 18px;
+      }
+
+      .contact-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact-item .emoji {
+        font-size: 1.18rem;
+        width: 22px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .contact-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .value {
+        color: var(--soft);
+        font-size: 0.96rem;
+        line-height: 1.5;
+      }
+
+      .value a {
+        color: #cfe2ff;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(96, 165, 250, 0.08);
+        border: 1px solid rgba(96, 165, 250, 0.22);
+        color: #d8eaff;
+        font-size: 0.8rem;
+        letter-spacing: 0.03em;
+      }
+
+      .lang-item {
+        margin-bottom: 14px;
+      }
+
+      .lang-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .lang-name {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--soft);
+        font-size: 0.92rem;
+      }
+
+      .bar {
+        position: relative;
+        width: 100%;
+        height: 7px;
+        background: rgba(96, 165, 250, 0.08);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .bar span {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: var(--w, 100%);
+        background: linear-gradient(90deg, var(--blue), #a6d0ff);
+        border-radius: inherit;
+      }
+
+      .content {
+        background: rgba(11, 18, 31, 0.74);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 28px 26px 18px;
+      }
+
+      .section {
+        margin-bottom: 36px;
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--soft);
+        margin-bottom: 18px;
+      }
+
+      .section-head .dot {
+        color: var(--blue);
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+
+      .section-head h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .summary {
+        color: var(--soft);
+        font-size: 1.05rem;
+        line-height: 1.9;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 26px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 2px;
+        bottom: 2px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--blue), rgba(96, 165, 250, 0.12));
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 26px;
+        padding-left: 20px;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -23px;
+        top: 5px;
+        width: 17px;
+        height: 17px;
+        background: linear-gradient(135deg, var(--blue), #a6d0ff);
+        border-radius: 50%;
+        box-shadow: 0 0 0 5px rgba(96, 165, 250, 0.12);
+      }
+
+      .timeline-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 6px;
+      }
+
+      .timeline-top h3 {
+        color: var(--soft);
+        font-size: 1.08rem;
+        font-weight: 700;
+      }
+
+      .period {
+        color: #9cc0ff;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .place {
+        color: #9bc0ff;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .entry {
+        color: var(--soft);
+        line-height: 1.75;
+        font-size: 0.96rem;
+      }
+
+      .strengths {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: rgba(96, 165, 250, 0.05);
+        border: 1px solid rgba(96, 165, 250, 0.18);
+        border-radius: 12px;
+        padding: 18px 16px 16px;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(96, 165, 250, 0.32);
+      }
+
+      .card-icon {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        margin: 0 auto 12px;
+        background: linear-gradient(135deg, rgba(97, 170, 255, 0.16), rgba(97, 170, 255, 0.06));
+        color: #a9d0ff;
+      }
+
+      .card h3 {
+        margin-bottom: 8px;
+        text-align: center;
+        color: var(--soft);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .card p {
+        text-align: center;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 0.9rem;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        margin-top: 12px;
+        padding-top: 16px;
+      }
+
+      .footer p {
+        text-align: center;
+        color: #8fa8cb;
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 980px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: relative;
+          top: 0;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          padding: 36px 20px 28px;
+        }
+
+        .topbar-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .divider {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .avatar {
+          width: 140px;
+          height: 140px;
+        }
+
+        .container {
+          padding: 18px;
+        }
+
+        .content,
+        .sidebar {
+          padding: 20px 18px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="page-shell">
+    <div class="page">
       <header class="topbar">
         <div class="topbar-inner">
-          <div class="title-block">
-            <h1>David <span>Tusevljak</span></h1>
-            <div class="headline-line"></div>
-            <div class="headline-label">Lebenslauf</div>
+          <div class="title-wrap">
+            <div class="eyebrow">Executive Profile</div>
+            <h1>David Tusevljak</h1>
+            <div class="divider"></div>
+            <div class="subtitle">Lebenslauf</div>
           </div>
 
-          <div class="avatar-wrap" aria-label="Avatar">
-            <div class="avatar-circle">
-              <div class="avatar-initials">DT</div>
-            </div>
+          <div class="avatar" aria-label="Initials David Tusevljak">
+            <span>DT</span>
           </div>
         </div>
       </header>
 
-      <main class="content-grid">
+      <main class="container">
         <aside class="sidebar">
-          <section class="panel">
-            <div class="panel-title">
-              <span class="icon">◔</span>
-              <h2>Persönliche Infos</h2>
+          <section class="module">
+            <div class="module-head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s8-4.5 8-10a8 8 0 0 0-16 0c0 5.5 8 10 8 10Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Kontakt
             </div>
+            <div class="rule"></div>
 
-            <ul class="info-list">
-              <li><span class="icon">⌂</span><span>3-1-10 Stavangergasse<br />1220 Wien</span></li>
-              <li><span class="icon">◎</span><span>Österreich</span></li>
-              <li><span class="icon">☎</span><span>+43 699 100 00547</span></li>
-              <li><span class="icon">✉</span><span>Tusevljak.david@outlook.at</span></li>
-              <li><span class="icon">📅</span><span>14/04/2012<br />in Wien</span></li>
+            <ul class="contact-list">
+              <li class="contact-item">
+                <span class="emoji">📧</span>
+                <div class="contact-meta">
+                  <span class="label">Email</span>
+                  <span class="value"><a href="mailto:Tusevljak.david@outlook.at">Tusevljak.david@outlook.at</a></span>
+                </div>
+              </li>
+
+              <li class="contact-item">
+                <span class="emoji">📞</span>
+                <div class="contact-meta">
+                  <span class="label">Telefon</span>
+                  <span class="value">+43 699 100 00547</span>
+                </div>
+              </li>
+
+              <li class="contact-item">
+                <span class="emoji">📍</span>
+                <div class="contact-meta">
+                  <span class="label">Adresse</span>
+                  <span class="value">Stavangergasse 3-1-10<br />1220 Wien, Österreich</span>
+                </div>
+              </li>
+
+              <li class="contact-item">
+                <span class="emoji">🎂</span>
+                <div class="contact-meta">
+                  <span class="label">Geburt</span>
+                  <span class="value">14. April 2012<br />in Wien</span>
+                </div>
+              </li>
             </ul>
           </section>
 
-          <section class="panel">
-            <div class="panel-title">
-              <span class="icon">⚙</span>
-              <h2>Fähigkeiten</h2>
+          <section class="module">
+            <div class="module-head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21h10"/><path d="M9 21V7h6v14"/><path d="M4 7h16"/><path d="M8 3h8"/></svg>
+              Kompetenzen
             </div>
+            <div class="rule"></div>
 
-            <ul class="check-list">
-              <li>Lernbereitschaft</li>
-              <li>Teamfähigkeit</li>
-              <li>Englische Sprache</li>
-              <li>Freundlichkeit</li>
-              <li>MS Office</li>
-              <li>Sport</li>
+            <div class="tags">
+              <span class="tag">Lernbereitschaft</span>
+              <span class="tag">Teamfähigkeit</span>
+              <span class="tag">Englisch</span>
+              <span class="tag">MS Office</span>
+              <span class="tag">Kommunikation</span>
+              <span class="tag">Freundlichkeit</span>
+              <span class="tag">Sport</span>
+            </div>
+          </section>
+
+          <section class="module">
+            <div class="module-head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="7"/></svg>
+              Sprachen
+            </div>
+            <div class="rule"></div>
+
+            <ul class="lang-list">
+              <li class="lang-item">
+                <span class="lang-name">Deutsch</span>
+                <div class="bar" style="--w: 100%;"><span></span></div>
+              </li>
+              <li class="lang-item">
+                <span class="lang-name">Englisch</span>
+                <div class="bar" style="--w: 82%;"><span></span></div>
+              </li>
             </ul>
           </section>
         </aside>
 
-        <section class="main">
-          <article class="article-block">
-            <div class="section-title-row">
-              <span class="section-icon">▣</span>
-              <h3>Über mich</h3>
+        <article class="content">
+          <section class="section">
+            <div class="section-head">
+              <span class="dot">●</span>
+              <h2>Profil</h2>
             </div>
-            <p>
-              Ich bin David und besuche derzeit die Antonia Bruha Mittelschule in Wien.
-              Mit meiner Lernbereitschaft und Teamfähigkeit bringe ich eine positive Einstellung
-              und Freundlichkeit in jede Zusammenarbeit ein. Ich habe gute Kenntnisse in MS Office
-              und spreche Englisch, was mir hilft, in verschiedenen Umgebungen erfolgreich zu
-              kommunizieren.
+            <p class="summary">
+              Ich bin David und besuche derzeit die Antonia Bruha Mittelschule in Wien. Mit meiner Lernbereitschaft, Teamfähigkeit und positiven Einstellung bringe ich in jede Zusammenarbeit Verantwortung, Freundlichkeit und Motivation ein. Ich habe gute Kenntnisse in MS Office und spreche Englisch, was mir hilft, in unterschiedlichen Situationen sicher und professionell zu agieren.
             </p>
-          </article>
+          </section>
 
-          <article class="article-block">
-            <div class="section-title-row">
-              <span class="section-icon">📘</span>
-              <h3>Ausbildung</h3>
+          <section class="section">
+            <div class="section-head">
+              <span class="dot">●</span>
+              <h2>Bildungsweg</h2>
             </div>
 
             <div class="timeline">
               <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-row">
-                    <strong>Wulzendorferstrasse 1, 1220 Wien</strong>
-                    <span>09/2018 – 07/2022</span>
-                  </div>
-                  <p>Volksschule Wien</p>
+                <div class="timeline-top">
+                  <h3>Antonia Bruha Mittelschule Wien</h3>
+                  <span class="period">2022 – Heute</span>
                 </div>
+                <div class="place">Langobarden Straße 139, 1220 Wien</div>
+                <p class="entry">
+                  Aktuelle Ausbildung mit Fokus auf digitale Kompetenzen, naturwissenschaftliche Fächer und persönliche Entwicklung. Ich nehme aktiv an schulischen Projekten und sozialen Aktivitäten teil und erweitere kontinuierlich meine Kenntnisse.
+                </p>
               </div>
 
               <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-row">
-                    <strong>Langobarden Straße 139, 1220 Wien</strong>
-                    <span>09/2022 – Heute</span>
-                  </div>
-                  <p>Antonia Bruha Mittelschule Wien</p>
+                <div class="timeline-top">
+                  <h3>Volksschule Wien</h3>
+                  <span class="period">2018 – 2022</span>
                 </div>
+                <div class="place">Wulzendorferstrasse 1, 1220 Wien</div>
+                <p class="entry">
+                  Grundlagenausbildung mit Fokus auf akademische, soziale und persönliche Entwicklung. Aufbau von Lernmotivation, Disziplin und Kommunikationsfähigkeit in der Schulumgebung.
+                </p>
               </div>
             </div>
-          </article>
+          </section>
 
-          <article class="article-block last">
-            <div class="section-title-row">
-              <span class="section-icon">▤</span>
-              <h3>Weitere Informationen</h3>
+          <section class="section">
+            <div class="section-head">
+              <span class="dot">●</span>
+              <h2>Kernstärken</h2>
             </div>
 
-            <ul class="info-stack">
-              <li><span class="stack-icon">⌂</span> Stavangergasse 3-1-10, 1220 Wien</li>
-              <li><span class="stack-icon">☎</span> +43 699 100 00547</li>
-              <li><span class="stack-icon">✉</span> Tusevljak.david@outlook.at</li>
-              <li><span class="stack-icon">📅</span> 14/04/2012 in Wien</li>
-            </ul>
-          </article>
-        </section>
+            <div class="strengths">
+              <div class="card">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Kommunikation</h3>
+                <p>Starke Gesprächsfähigkeit und verständliche Zusammenarbeit in Deutsch und Englisch.</p>
+              </div>
+
+              <div class="card">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Teamfähigkeit</h3>
+                <p>Positive Zusammenarbeit mit Gleichaltrigen und Bereitschaft, in Gruppen zu helfen.</p>
+              </div>
+
+              <div class="card">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/></svg>
+                </div>
+                <h3>Flexibilität</h3>
+                <p>Bereitschaft, sich an neue Situationen, Aufgaben und Lernumgebungen anzupassen.</p>
+              </div>
+
+              <div class="card">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9-6-18-3 9H2"/></svg>
+                </div>
+                <h3>Zuverlässigkeit</h3>
+                <p>Verantwortungsbewusstsein, Ordnung und konsequente Umsetzung von Aufgaben.</p>
+              </div>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <p>© 2024 David Tusevljak</p>
+          </footer>
+        </article>
       </main>
     </div>
   </body>
